@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hub de IA estados</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap">
+<style>
+/* Seis cenas quadradas (900x900) do Hub de IA Sinapsys, uma por estado da conversa, cada uma com animação em loop. Visual do protótipo do hub. */
+:root{
+  --green:#78be42; --green-d:#486d2b; --green-dd:#1c2e10; --green-l:#e8f2df;
+  --bg:#ffffff; --soft:#f4f4f4; --line:#ececec; --text:#333333; --muted:#8b8b8b;
+  --red:#b3261e; --red-l:#fbe9e7;
+  --font:'Hanken Grotesk',-apple-system,'Segoe UI',Roboto,sans-serif;
+  --loop:7s;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:#fff;overflow:hidden}
+body{font-family:var(--font);color:var(--text)}
+.scene{width:900px;height:900px;background:var(--bg);position:relative;overflow:hidden;display:flex}
+.scene:not(.show){display:none}
+svg.i{width:1em;height:1em;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* chrome */
+.side{width:200px;flex:none;background:#f7f9f4;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:18px;padding:22px 14px}
+.logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:18px;color:var(--green-d)}
+.logo i{width:26px;height:26px;border-radius:7px;background:var(--green);display:block}
+.newchat{display:flex;align-items:center;gap:8px;height:36px;padding:0 12px;border-radius:8px;background:var(--green);color:var(--green-dd);font-weight:600;font-size:14px}
+.slabel{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:0 8px 6px}
+.sitem{display:flex;align-items:center;gap:8px;height:32px;padding:0 8px;border-radius:6px;font-size:13.5px;color:#4a4a4a;white-space:nowrap;overflow:hidden}
+.sitem.act{background:var(--green-l);color:var(--green-dd);font-weight:600}
+.main{flex:1;display:flex;flex-direction:column;min-width:0}
+.top{height:60px;flex:none;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 24px}
+.crumb{font-size:14px;color:var(--muted)} .crumb b{color:var(--text);font-weight:600}
+.cred{font-size:13px;color:#607f3f;font-weight:600;font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:8px}
+.cred i{display:block;width:70px;height:5px;border-radius:99px;background:#e0e0e0;overflow:hidden;position:relative}
+.cred i::after{content:"";position:absolute;inset:0 60% 0 0;background:var(--green)}
+.thread{flex:1;padding:26px 30px 0;display:flex;flex-direction:column;gap:18px;justify-content:flex-end;position:relative;min-height:0}
+.composer{flex:none;padding:12px 30px 24px;display:flex;flex-direction:column;gap:10px}
+.chips{display:flex;gap:8px;min-height:24px}
+.tag{display:inline-flex;align-items:center;gap:5px;height:26px;padding:0 10px;border-radius:6px;font-size:12.5px;font-weight:600;background:#efefef;color:#4a4a4a;white-space:nowrap}
+.tag.ok{background:var(--green-l);color:#3d5a24}
+.tag.err{background:var(--red-l);color:var(--red)}
+.input{display:flex;align-items:center;gap:12px;min-height:58px;padding:0 10px 0 18px;border-radius:14px;box-shadow:inset 0 0 0 1px #dcdcdc,0 6px 18px rgba(0,0,0,.05)}
+.input .tx{flex:1;font-size:15px;color:#a0a0a0;white-space:nowrap;overflow:hidden}
+.send{width:40px;height:40px;border-radius:99px;display:grid;place-items:center;background:#e6e6e6;color:#fff;font-size:18px;flex:none}
+.btn{display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 14px;border-radius:99px;font-size:13px;font-weight:600;box-shadow:inset 0 0 0 1px #dcdcdc;color:#4a4a4a;background:#fff;white-space:nowrap}
+.btn.pri{background:var(--green);color:var(--green-dd);box-shadow:none}
+.btn.sq{border-radius:8px;height:42px;font-size:14px}
+.bubble{align-self:flex-end;max-width:80%;background:var(--soft);border-radius:10px;padding:12px 16px;font-size:15px;line-height:1.45;font-weight:500}
+.card{background:var(--soft);border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:12px}
+.ptxt{margin:0;font-size:15.5px;line-height:1.5;font-weight:500}
+.meta{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted)}
+.meta svg{color:var(--green)}
+.cur-ptr{position:absolute;width:30px;height:30px;z-index:20;pointer-events:none;filter:drop-shadow(0 3px 6px rgba(0,0,0,.3))}
+.ripple{position:absolute;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:99px;border:3px solid var(--green);opacity:0;z-index:19;pointer-events:none}
+
+/* ===== 1 Estado zero ===== */
+#s1 .thread{justify-content:flex-start;padding-top:40px}
+.h1{margin:0;font-weight:800;font-size:34px;line-height:1.05;color:var(--green-d);letter-spacing:-.02em}
+.lead{margin:-6px 0 0;font-size:15px;line-height:1.45;color:var(--muted);font-weight:500}
+.apps{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.app{display:flex;flex-direction:column;gap:6px;padding:16px;border-radius:12px;box-shadow:inset 0 0 0 1px var(--line);background:#fff}
+.app svg{color:var(--green);font-size:22px}
+.app b{font-size:15px;font-weight:600}
+.app span{font-size:12.5px;line-height:1.4;color:var(--muted)}
+#s1 .a1{animation:s1hot var(--loop) infinite}
+@keyframes s1hot{0%,28%{box-shadow:inset 0 0 0 1px var(--line);transform:none}34%,100%{box-shadow:inset 0 0 0 2px var(--green);background:#fbfdf8;transform:translateY(-2px)}}
+#s1 .sugs{display:flex;flex-wrap:wrap;gap:8px}
+#s1 .sugs .btn{opacity:0;animation:s1sug var(--loop) infinite}
+#s1 .sugs .btn:nth-child(2){animation-delay:.3s}
+@keyframes s1sug{0%,4%{opacity:0;transform:translateY(8px)}10%,94%{opacity:1;transform:none}100%{opacity:0}}
+#s1 .cur-ptr{animation:s1c var(--loop) infinite}
+@keyframes s1c{0%{left:600px;top:800px}26%,40%{left:330px;top:290px}70%,100%{left:600px;top:800px}}
+#s1 .r1{left:330px;top:290px;animation:rp1 var(--loop) infinite}
+@keyframes rp1{0%,32%{opacity:0;transform:scale(.3)}34%{opacity:.9;transform:scale(.3)}40%,100%{opacity:0;transform:scale(1.5)}}
+
+/* ===== 2 Input ===== */
+#s2 .chips .tag{opacity:0;animation:s2chip var(--loop) infinite}
+#s2 .chips .tag:nth-child(2){animation-delay:.25s}
+#s2 .chips .tag:nth-child(3){animation-delay:.5s}
+@keyframes s2chip{0%,6%{opacity:0;transform:scale(.6)}12%,94%{opacity:1;transform:none}100%{opacity:0}}
+#s2 .input{animation:s2focus var(--loop) infinite}
+@keyframes s2focus{0%,10%{box-shadow:inset 0 0 0 1px #dcdcdc,0 6px 18px rgba(0,0,0,.05)}14%,94%{box-shadow:inset 0 0 0 2px var(--green),0 6px 18px rgba(0,0,0,.05)}}
+#s2 .tx{color:var(--text)}
+#s2 .typed{display:inline-block;overflow:hidden;white-space:nowrap;vertical-align:bottom;width:0;animation:s2type var(--loop) infinite steps(40)}
+@keyframes s2type{0%,18%{width:0}62%,100%{width:520px}}
+#s2 .caret{display:inline-block;width:2px;height:18px;background:var(--green-d);vertical-align:-3px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+#s2 .send{animation:s2send var(--loop) infinite}
+@keyframes s2send{0%,62%{background:#e6e6e6;color:#fff}66%,100%{background:var(--green);color:var(--green-dd)}}
+#s2 .hint{align-self:flex-start;display:flex;flex-direction:column;gap:10px;padding:18px;border-radius:12px;box-shadow:inset 0 0 0 1px var(--line);width:100%;animation:s2hint var(--loop) infinite}
+@keyframes s2hint{0%,14%{opacity:0;transform:translateY(10px)}20%,100%{opacity:1;transform:none}}
+#s2 .hint .row{display:flex;justify-content:space-between;font-size:14px}
+#s2 .hint .row b{font-weight:600}
+#s2 .lbl{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+#s2 .cur-ptr{animation:s2c var(--loop) infinite}
+@keyframes s2c{0%,60%{left:600px;top:700px}70%,80%{left:842px;top:838px}100%{left:600px;top:700px}}
+#s2 .r1{left:842px;top:838px;animation:rp2 var(--loop) infinite}
+@keyframes rp2{0%,70%{opacity:0;transform:scale(.3)}72%{opacity:.9;transform:scale(.3)}78%,100%{opacity:0;transform:scale(1.5)}}
+
+/* ===== 3 Latência ===== */
+.step{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:500;color:var(--muted)}
+.step svg{font-size:16px}
+#s3 .st1,#s3 .st2,#s3 .st3{opacity:0}
+#s3 .st1{animation:s3st var(--loop) infinite}
+#s3 .st2{animation:s3st var(--loop) infinite;animation-delay:.8s}
+#s3 .st3{animation:s3st var(--loop) infinite;animation-delay:1.6s}
+@keyframes s3st{0%,6%{opacity:0;transform:translateX(-8px)}12%,96%{opacity:1;transform:none}100%{opacity:0}}
+#s3 .st1,#s3 .st2{color:var(--green-d)}
+#s3 .spin{animation:spin 1.1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.bar{height:6px;border-radius:99px;background:#e0e0e0;overflow:hidden;position:relative}
+.bar i{position:absolute;left:0;top:0;height:100%;border-radius:99px;background:var(--green);width:0;animation:s3bar var(--loop) infinite}
+@keyframes s3bar{0%,30%{width:0}90%,100%{width:72%}}
+.rowsb{display:flex;align-items:center;justify-content:space-between;font-size:13.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.ctr{display:inline-block;position:relative;height:18px;width:30px;overflow:hidden;vertical-align:-4px}
+.ctr i{position:absolute;left:0;top:0;font-style:normal;display:flex;flex-direction:column;animation:s3ctr var(--loop) infinite steps(6)}
+.ctr i span{height:18px;line-height:18px}
+@keyframes s3ctr{0%,30%{transform:none}90%,100%{transform:translateY(-108px)}}
+#s3 .stop{animation:s3stop 1.6s ease-in-out infinite}
+@keyframes s3stop{50%{box-shadow:inset 0 0 0 2px var(--green-d)}}
+#s3 .send{background:#333}
+
+/* ===== 4 Desambiguação ===== */
+.opts{display:flex;flex-direction:column;align-items:flex-start;gap:9px}
+#s4 .o1{animation:s4o1 var(--loop) infinite}
+@keyframes s4o1{0%,30%{background:#fff;box-shadow:inset 0 0 0 1px #dcdcdc}34%,44%{box-shadow:inset 0 0 0 2px var(--green-d)}48%,100%{background:var(--green-l);box-shadow:inset 0 0 0 2px var(--green);color:var(--green-dd)}}
+#s4 .res{opacity:0;animation:s4res var(--loop) infinite}
+@keyframes s4res{0%,52%{opacity:0;transform:translateY(10px)}60%,100%{opacity:1;transform:none}}
+#s4 .cur-ptr{animation:s4c var(--loop) infinite}
+@keyframes s4c{0%{left:640px;top:820px}28%,48%{left:330px;top:520px}76%,100%{left:640px;top:820px}}
+#s4 .r1{left:330px;top:520px;animation:rp4 var(--loop) infinite}
+@keyframes rp4{0%,44%{opacity:0;transform:scale(.3)}46%{opacity:.9;transform:scale(.3)}52%,100%{opacity:0;transform:scale(1.5)}}
+
+/* ===== 5 Output ===== */
+.table{border-radius:10px;box-shadow:inset 0 0 0 1px var(--line);overflow:hidden}
+.tr{display:grid;grid-template-columns:1fr 100px 130px;align-items:center;gap:10px;padding:0 14px;height:46px;border-top:1px solid var(--line);font-size:13.5px}
+.tr.th{height:36px;border-top:0;background:#fafafa;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.tr a{color:var(--green-d);text-decoration:none;font-size:12.5px}
+#s5 .tr:not(.th){opacity:0;animation:s5row var(--loop) infinite}
+#s5 .tr:nth-child(3){animation-delay:.25s}#s5 .tr:nth-child(4){animation-delay:.5s}#s5 .tr:nth-child(5){animation-delay:.75s}
+@keyframes s5row{0%,6%{opacity:0;transform:translateY(8px)}12%,94%{opacity:1;transform:none}100%{opacity:0}}
+#s5 .refine{display:flex;gap:8px;flex-wrap:wrap}
+#s5 .refine .btn{opacity:0;animation:s5ref var(--loop) infinite}
+#s5 .refine .btn:nth-child(2){animation-delay:.15s}#s5 .refine .btn:nth-child(3){animation-delay:.3s}#s5 .refine .btn:nth-child(4){animation-delay:.45s}
+@keyframes s5ref{0%,30%{opacity:0;transform:translateY(8px) scale(.96)}38%,94%{opacity:1;transform:none}100%{opacity:0}}
+#s5 .credn{display:inline-block;position:relative;width:30px;height:16px;overflow:hidden;vertical-align:-3px}
+#s5 .credn i{position:absolute;left:0;font-style:normal;animation:s5n1 var(--loop) infinite}
+#s5 .credn i:last-child{animation-name:s5n2}
+@keyframes s5n1{0%,10%{transform:none;opacity:1}16%,100%{transform:translateY(-16px);opacity:0}}
+@keyframes s5n2{0%,10%{transform:translateY(16px);opacity:0}16%,100%{transform:none;opacity:1}}
+#s5 .f1{animation:s5hot var(--loop) infinite}
+@keyframes s5hot{0%,60%{box-shadow:none}66%,100%{box-shadow:inset 0 0 0 2px var(--green-dd)}}
+#s5 .cur-ptr{animation:s5c var(--loop) infinite}
+@keyframes s5c{0%,40%{left:780px;top:820px}60%,80%{left:330px;top:700px}100%{left:780px;top:820px}}
+
+/* ===== 6 Ausência ===== */
+#s6 .lat{display:flex;flex-direction:column;gap:8px;background:var(--soft);border-radius:10px;padding:14px;font-size:13.5px;color:var(--muted);animation:s6lat var(--loop) infinite}
+@keyframes s6lat{0%,8%{opacity:0}12%,30%{opacity:1}34%,100%{opacity:0;height:0;padding:0;margin:-9px 0}}
+#s6 .lat .bar i{animation:s6bar var(--loop) infinite}
+@keyframes s6bar{0%,10%{width:0}30%,100%{width:100%}}
+#s6 .ab{opacity:0;animation:s6ab var(--loop) infinite}
+#s6 .ab:nth-of-type(2){animation-delay:.3s}
+#s6 .a1{animation-delay:0s}#s6 .a2{animation-delay:.35s}#s6 .a3{animation-delay:.7s}#s6 .a4{animation-delay:1.05s}
+@keyframes s6ab{0%,34%{opacity:0;transform:translateY(10px)}40%,96%{opacity:1;transform:none}100%{opacity:0}}
+.absh{margin:0;font-size:19px;font-weight:700;line-height:1.25}
+.box{background:var(--soft);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:8px}
+.lbl2{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.kv{display:grid;grid-template-columns:90px 1fr;gap:10px;font-size:13.5px;font-weight:500}
+.kv span{color:var(--muted);font-weight:400}
+.near{display:flex;flex-direction:column;gap:6px}
+.near a{font-size:14px;font-weight:500;color:var(--green-d);text-decoration:none}
+.mbtns{display:flex;gap:8px}
+
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{animation-play-state:paused!important; animation-delay:-5.6s!important}
+}
+</style></head><body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></symbol>
+  <symbol id="i-spin" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v5h-5"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
+  <symbol id="i-stop" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1" fill="currentColor"/></symbol>
+  <symbol id="i-fact" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 9l2 2 4-4M8 15h8"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/></symbol>
+  <symbol id="i-comment" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L3 21l1.9-6.4A8 8 0 1 1 21 12z"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
+  <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
+  <symbol id="i-rule" viewBox="0 0 24 24"><path d="M4 6h10M4 12h10M4 18h6M17 16l2 2 3-4"/></symbol>
+  <symbol id="ptr" viewBox="0 0 28 28"><path d="M5 3 L5 23 L10.5 18 L14 26 L17.5 24.5 L14 16.8 L21.5 16.8 Z" fill="#111" stroke="#fff" stroke-width="2" stroke-linejoin="round"/></symbol>
+</svg>
+
+<template id="side">
+  <aside class="side">
+    <div class="logo"><i></i>Sinapsys</div>
+    <div class="newchat">+ Novo chat</div>
+    <div><div class="slabel">Chats</div><div class="sitem act">Validação Serra Azul</div><div class="sitem">Lista mestre rev. 06</div><div class="sitem">Comentários talude sul</div></div>
+    <div><div class="slabel">Projetos</div><div class="sitem">Serra Azul</div><div class="sitem">Barragem Rio Claro</div><div class="sitem">Linha Norte</div></div>
+  </aside>
+</template>
+
+<!-- 1 Estado zero -->
+<section class="scene" id="s1" data-s="zero">
+  <div class="main">
+    <div class="top"><span class="crumb">Aplicativos</span><span class="cred">800 / 2.000 créditos<i></i></span></div>
+    <div class="thread">
+      <h1 class="h1">Hub de IA Sinapsys</h1>
+      <p class="lead">A base indexada tem 12.480 documentos internos. Escolha um aplicativo ou peça algo sobre um projeto.</p>
+      <div class="apps">
+        <div class="app a1"><svg class="i"><use href="#i-fact"/></svg><b>Validador de documentos</b><span>Confere documentos contra um checklist de conformidade.</span></div>
+        <div class="app"><svg class="i"><use href="#i-list"/></svg><b>Gerador de lista mestre</b><span>Monta a lista mestre de documentos técnicos.</span></div>
+        <div class="app"><svg class="i"><use href="#i-comment"/></svg><b>Extrator de comentários</b><span>Agrupa apontamentos de revisão por autor.</span></div>
+        <div class="app"><svg class="i"><use href="#i-search"/></svg><b>Consulta à base</b><span>Normas, laudos e memoriais indexados.</span></div>
+      </div>
+      <div class="sugs"><span class="btn">Validar Serra Azul contra o checklist</span><span class="btn">Gerar a lista mestre de Serra Azul</span></div>
+    </div>
+    <div class="composer"><div class="input"><span class="tx">Pergunte alguma coisa</span><span class="send"><svg class="i"><use href="#i-up"/></svg></span></div></div>
+  </div>
+  <span class="ripple r1"></span>
+  <svg class="cur-ptr"><use href="#ptr"/></svg>
+</section>
+
+<!-- 2 Input -->
+<section class="scene" id="s2" data-s="input">
+  <div class="main">
+    <div class="top"><span class="crumb">Aplicativos › <b>Validador de documentos</b></span><span class="cred">800 / 2.000 créditos<i></i></span></div>
+    <div class="thread">
+      <div class="hint">
+        <span class="lbl">Escopo desta conversa</span>
+        <div class="row"><span>Projeto</span><b>Serra Azul</b></div>
+        <div class="row"><span>Documentos</span><b>212 no escopo</b></div>
+        <div class="row"><span>Referência</span><b>Checklist de conformidade</b></div>
+      </div>
+    </div>
+    <div class="composer">
+      <div class="chips"><span class="tag ok"><svg class="i"><use href="#i-folder"/></svg>Serra Azul · 212</span><span class="tag ok"><svg class="i"><use href="#i-rule"/></svg>Checklist de conformidade</span><span class="tag">+ Fonte</span></div>
+      <div class="input"><span class="tx"><span class="typed">Valide os documentos do projeto Serra Azul contra o checklist de conformidade.</span><span class="caret"></span></span><span class="send"><svg class="i"><use href="#i-up"/></svg></span></div>
+    </div>
+  </div>
+  <span class="ripple r1"></span>
+  <svg class="cur-ptr"><use href="#ptr"/></svg>
+</section>
+
+<!-- 3 Latência -->
+<section class="scene" id="s3" data-s="latencia">
+  <div class="main">
+    <div class="top"><span class="crumb">Aplicativos › <b>Validador de documentos</b></span><span class="cred">800 / 2.000 créditos<i></i></span></div>
+    <div class="thread">
+      <div class="bubble">Valide os documentos do projeto Serra Azul contra o checklist de conformidade.</div>
+      <div class="card">
+        <div class="step st1"><svg class="i"><use href="#i-check"/></svg>Base consultada: 212 documentos no escopo.</div>
+        <div class="step st2"><svg class="i"><use href="#i-check"/></svg>Checklist localizado: 2 revisões vigentes.</div>
+        <div class="step st3"><svg class="i spin"><use href="#i-spin"/></svg>Conferindo item por item.</div>
+        <div class="bar"><i></i></div>
+        <div class="rowsb"><span><span class="ctr"><i><span>0</span><span>18</span><span>41</span><span>63</span><span>84</span><span>112</span><span>153</span></i></span> de 212 documentos verificados</span><span class="btn stop"><svg class="i"><use href="#i-stop"/></svg>Parar</span></div>
+      </div>
+    </div>
+    <div class="composer"><div class="input"><span class="tx">Validando 212 documentos…</span><span class="send"><svg class="i"><use href="#i-stop"/></svg></span></div></div>
+  </div>
+</section>
+
+<!-- 4 Desambiguação -->
+<section class="scene" id="s4" data-s="desambiguacao">
+  <div class="main">
+    <div class="top"><span class="crumb">Aplicativos › <b>Validador de documentos</b></span><span class="cred">800 / 2.000 créditos<i></i></span></div>
+    <div class="thread">
+      <div class="bubble">Valide os documentos do projeto Serra Azul contra o checklist de conformidade.</div>
+      <p class="ptxt">A base tem duas revisões vigentes do checklist para este projeto. A validação muda de resultado conforme a escolha.</p>
+      <div class="opts">
+        <span class="btn sq o1">Checklist rev. 07 · março de 2026</span>
+        <span class="btn sq">Checklist rev. 05 · agosto de 2024</span>
+        <span class="btn sq" style="box-shadow:none;color:#8b8b8b">Nenhuma dessas</span>
+      </div>
+      <div class="meta res"><svg class="i"><use href="#i-check"/></svg>Usando checklist rev. 07 · retomando a validação</div>
+    </div>
+    <div class="composer"><div class="input"><span class="tx">Aguardando sua escolha…</span><span class="send"><svg class="i"><use href="#i-up"/></svg></span></div></div>
+  </div>
+  <span class="ripple r1"></span>
+  <svg class="cur-ptr"><use href="#ptr"/></svg>
+</section>
+
+<!-- 5 Output -->
+<section class="scene" id="s5" data-s="output">
+  <div class="main">
+    <div class="top"><span class="crumb">Aplicativos › <b>Validador de documentos</b></span><span class="cred"><span class="credn"><i>800</i><i>803</i></span> / 2.000 créditos<i></i></span></div>
+    <div class="thread">
+      <div class="meta"><svg class="i"><use href="#i-check"/></svg>212 lidos · checklist rev. 07 · índice de 27/08 às 09:12 · 3 créditos</div>
+      <p class="ptxt"><b>204 documentos atendem ao checklist.</b> 8 reprovaram em pelo menos um item.</p>
+      <div class="table">
+        <div class="tr th"><span>Item do checklist</span><span>Situação</span><span>Fonte</span></div>
+        <div class="tr"><span>ART e registro do responsável técnico</span><span><span class="tag ok">Aprovado</span></span><a>ART-SA-rev07 · p.1</a></div>
+        <div class="tr"><span>Memorial descritivo na revisão vigente</span><span><span class="tag ok">Aprovado</span></span><a>MD-SA-07 · p.3</a></div>
+        <div class="tr"><span>Plano de inspeção de taludes assinado</span><span><span class="tag err">Reprovado</span></span><a>PIT-SA-05 · p.12</a></div>
+        <div class="tr"><span>Laudo de estabilidade na validade</span><span><span class="tag err">Reprovado</span></span><a>LE-SA-2023 · p.8</a></div>
+      </div>
+      <div class="refine"><span class="btn pri f1">Só os 8 reprovados</span><span class="btn">Agrupar por disciplina</span><span class="btn">Exportar lista</span><span class="btn">Regerar com rev. 05</span></div>
+    </div>
+    <div class="composer"><div class="input"><span class="tx">Pergunte alguma coisa</span><span class="send"><svg class="i"><use href="#i-up"/></svg></span></div></div>
+  </div>
+  <svg class="cur-ptr"><use href="#ptr"/></svg>
+</section>
+
+<!-- 6 Ausência -->
+<section class="scene" id="s6" data-s="ausencia">
+  <div class="main">
+    <div class="top"><span class="crumb">Aplicativos › <b>Consulta à base</b></span><span class="cred">803 / 2.000 créditos<i></i></span></div>
+    <div class="thread">
+      <div class="bubble">E o laudo geotécnico do talude norte de 2019?</div>
+      <div class="lat"><span>Buscando em 12.480 documentos…</span><div class="bar"><i></i></div></div>
+      <p class="absh ab a1">Não encontrei esse laudo na base.</p>
+      <div class="box ab a2"><span class="lbl2">O que foi procurado</span>
+        <div class="kv"><span>Termos</span>laudo geotécnico · talude norte · 2019</div>
+        <div class="kv"><span>Fontes</span>Serra Azul, Geotecnia, Laudos</div>
+        <div class="kv"><span>Varredura</span>12.480 documentos, nenhum correspondente</div></div>
+      <div class="near ab a3"><span class="lbl2">O mais próximo que existe</span><a>Laudo geotécnico do talude sul · 2019</a><a>Inspeção anual de taludes · 2021</a></div>
+      <div class="mbtns ab a4"><span class="btn pri">Solicitar o documento</span><span class="btn">Ampliar o escopo</span></div>
+    </div>
+    <div class="composer"><div class="input"><span class="tx">Pergunte alguma coisa</span><span class="send"><svg class="i"><use href="#i-up"/></svg></span></div></div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var tpl=document.getElementById('side');
+  document.querySelectorAll('.scene').forEach(function(sc){ sc.insertBefore(tpl.content.cloneNode(true), sc.firstChild); });
+  var h=(location.hash||'#zero').slice(1);
+  var el=document.querySelector('.scene[data-s="'+h+'"]')||document.querySelector('.scene');
+  el.classList.add('show');
+})();
+</script>
+</body></html>
