@@ -2,7 +2,8 @@
 
 Site pessoal estático: quem sou, cases (ADScanner e Hub de IA Sinapsys), resultados, trajetória e contato.
 
-- `index.html`: o site inteiro, com animações em GSAP e uma página por case (`#case-adscanner`, `#case-sinapsys`)
+- `index.html`: página inicial, com animações em GSAP
+- `cases/adscanner/` e `cases/sinapsys/`: uma página por case (em inglês, `en/cases/...`). Links antigos com `#case-adscanner` e `#case-sinapsys` redirecionam para as páginas novas
 - `ads-video.html` e `hub-video.html`: vídeos dos cases
 - `ads-steps.html` e `hub-steps.html`: telas animadas da seção "O produto"
 - `asafe.jpg`: foto do hero
