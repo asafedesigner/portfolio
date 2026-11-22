@@ -140,4 +140,18 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.asafedesigner.com.br/en/blog/category/technology/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.asafedesigner.com.br/en/blog/category/technology/"/>
   </url>
+  <url>
+    <loc>https://www.asafedesigner.com.br/autor/asafeferreira/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.asafedesigner.com.br/autor/asafeferreira/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.asafedesigner.com.br/en/author/asafeferreira/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.asafedesigner.com.br/en/author/asafeferreira/"/>
+  </url>
+  <url>
+    <loc>https://www.asafedesigner.com.br/en/author/asafeferreira/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.asafedesigner.com.br/autor/asafeferreira/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.asafedesigner.com.br/en/author/asafeferreira/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.asafedesigner.com.br/en/author/asafeferreira/"/>
+  </url>
 </urlset>
