@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <rect width="1200" height="800" fill="#FFA061"/>
+  <!-- yellow blob -->
+  <ellipse cx="612" cy="420" rx="330" ry="300" fill="#FFE83A"/>
+  <!-- habit loop -->
+  <g fill="none" stroke="#111" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M330 300 C 380 150, 560 90, 720 120 C 880 150, 960 280, 930 400" stroke-dasharray="2 22"/>
+    <path d="M915 610 C 840 720, 640 760, 500 710 C 380 668, 300 560, 300 430" stroke-dasharray="2 22"/>
+    <path d="M908 384 L930 414 L954 386"/>
+    <path d="M280 452 L300 418 L326 450"/>
+  </g>
+  <!-- loop nodes -->
+  <g stroke="#111" stroke-width="6">
+    <circle cx="330" cy="300" r="34" fill="#fff"/>
+    <circle cx="930" cy="470" r="34" fill="#B8A4F4"/>
+    <circle cx="500" cy="712" r="34" fill="#FF8FC0"/>
+  </g>
+  <!-- clock (trigger) -->
+  <g fill="none" stroke="#111" stroke-width="5" stroke-linecap="round"><path d="M330 280 L330 300 L346 310"/></g>
+  <!-- tap (behavior) -->
+  <g fill="none" stroke="#111" stroke-width="5" stroke-linecap="round"><path d="M920 456 L942 478 M942 460 L942 478 L924 478"/></g>
+  <!-- heart (reward) -->
+  <path d="M500 728 C 478 712, 482 694, 494 694 C 500 694, 500 700, 500 702 C 500 700, 500 694, 506 694 C 518 694, 522 712, 500 728 Z" fill="#111"/>
+  <!-- phone -->
+  <g transform="rotate(-8 612 420)">
+    <rect x="482" y="160" width="260" height="500" rx="38" fill="#fff" stroke="#111" stroke-width="8"/>
+    <rect x="574" y="182" width="76" height="14" rx="7" fill="#111"/>
+    <!-- app header -->
+    <rect x="510" y="216" width="204" height="28" rx="14" fill="#F5F1E8" stroke="#111" stroke-width="4"/>
+    <!-- food card -->
+    <rect x="510" y="262" width="204" height="170" rx="18" fill="#FF8FC0" stroke="#111" stroke-width="5"/>
+    <!-- burger -->
+    <path d="M556 352 C 556 312, 668 312, 668 352 Z" fill="#FFE83A" stroke="#111" stroke-width="5" stroke-linejoin="round"/>
+    <rect x="550" y="356" width="124" height="14" rx="7" fill="#111"/>
+    <path d="M552 378 L672 378 L664 398 C 640 406, 584 406, 560 398 Z" fill="#FFE83A" stroke="#111" stroke-width="5" stroke-linejoin="round"/>
+    <circle cx="590" cy="334" r="3" fill="#111"/><circle cx="612" cy="326" r="3" fill="#111"/><circle cx="636" cy="334" r="3" fill="#111"/>
+    <!-- coupon -->
+    <rect x="510" y="448" width="120" height="40" rx="20" fill="#FFE83A" stroke="#111" stroke-width="4"/>
+    <path d="M532 476 L560 460 M534 462 L534 462 M558 476 L558 476" stroke="#111" stroke-width="6" stroke-linecap="round"/>
+    <rect x="640" y="448" width="74" height="40" rx="20" fill="#fff" stroke="#111" stroke-width="4"/>
+    <!-- list rows -->
+    <rect x="510" y="506" width="204" height="12" rx="6" fill="#111" opacity=".85"/>
+    <rect x="510" y="530" width="150" height="12" rx="6" fill="#111" opacity=".35"/>
+    <!-- order button -->
+    <rect x="510" y="570" width="204" height="56" rx="28" fill="#111"/>
+    <path d="M592 598 L632 598 M618 584 L632 598 L618 612" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+  <!-- sparkles -->
+  <g stroke="#111" stroke-width="6" stroke-linecap="round">
+    <path d="M820 220 L820 256 M802 238 L838 238"/>
+    <path d="M400 560 L400 588 M386 574 L414 574"/>
+  </g>
+</svg>
