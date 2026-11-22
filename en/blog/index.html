@@ -608,6 +608,26 @@ a.tagchip:hover{background:var(--hl); color:var(--on-hl)}
 .post-card .art{overflow:hidden}
 .post-card .art img{aspect-ratio:16/8; height:auto}
 
+/* mobile menu */
+.m-menu{display:none}
+.m-menu summary{list-style:none; min-height:44px; padding:8px 14px; border:var(--b-ui) solid var(--line); border-radius:var(--r-pill); background:var(--surface); color:var(--ink); font:800 14px/1 var(--sans); display:inline-flex; align-items:center; gap:10px; cursor:pointer; user-select:none}
+.m-menu summary::-webkit-details-marker{display:none}
+.m-menu .ic{position:relative; width:16px; height:2px; background:currentColor; box-shadow:0 -5px 0 currentColor, 0 5px 0 currentColor}
+.m-menu[open] summary{background:var(--ink); color:var(--paper)}
+.m-menu[open] .ic{box-shadow:none; transform:rotate(45deg)}
+.m-menu[open] .ic::after{content:""; position:absolute; inset:0; background:currentColor; transform:rotate(90deg)}
+.m-panel{position:absolute; left:0; right:0; top:100%; background:var(--paper); border-bottom:var(--b-ui) solid var(--line); padding:var(--s2) max(16px, env(safe-area-inset-right, 0px)) var(--s5) max(16px, env(safe-area-inset-left, 0px)); display:flex; flex-direction:column}
+.m-panel a{font:800 26px/1.15 var(--display); letter-spacing:-.4px; color:var(--ink); text-decoration:none; padding:16px 0; border-bottom:var(--b-ui) dashed var(--line)}
+.m-panel a:last-child{border-bottom:0}
+.m-panel a[aria-current="page"]{text-decoration:underline; text-decoration-color:var(--hl); text-decoration-thickness:8px; text-underline-offset:-2px; text-decoration-skip-ink:none}
+@media (max-width:640px){
+  .m-menu{display:block}
+  .nav a.cta{display:none}
+  .brand{white-space:nowrap}
+  .top .wrap{gap:var(--s2)}
+  .nav{margin-left:auto}
+}
+
 </style>
 <body>
 <script>(function(){var h=decodeURIComponent((location.hash||"").slice(1));if(!h)return;var m={"experience":"/en/blog/category/experience/","product":"/en/blog/category/product/","technology":"/en/blog/category/technology/","tag-survivorship-bias":"/en/blog/tag/survivorship-bias/","tag-prioritization":"/en/blog/tag/prioritization/","tag-churn":"/en/blog/tag/churn/","tag-product-decisions":"/en/blog/tag/product-decisions/","tag-cognitive-biases":"/en/blog/tag/cognitive-biases/","tag-user-research":"/en/blog/tag/user-research/","tag-product-metrics":"/en/blog/tag/product-metrics/","tag-discovery":"/en/blog/tag/discovery/","tag-product-management":"/en/blog/tag/product-management/","tag-abraham-wald":"/en/blog/tag/abraham-wald/","tag-habit-formation":"/en/blog/tag/habit-formation/","tag-dopamine":"/en/blog/tag/dopamine/","tag-reward-circuit":"/en/blog/tag/reward-circuit/","tag-satisficing":"/en/blog/tag/satisficing/","tag-neuroscience":"/en/blog/tag/neuroscience/","tag-consumer-behavior":"/en/blog/tag/consumer-behavior/","tag-food-delivery":"/en/blog/tag/food-delivery/","tag-behavioral-design":"/en/blog/tag/behavioral-design/","tag-decision-making":"/en/blog/tag/decision-making/","tag-ux-careers":"/en/blog/tag/ux-careers/","tag-junior-ux-designer":"/en/blog/tag/junior-ux-designer/","tag-generative-ai":"/en/blog/tag/generative-ai/","tag-automation-bias":"/en/blog/tag/automation-bias/","tag-critical-thinking":"/en/blog/tag/critical-thinking/","tag-portfolio":"/en/blog/tag/portfolio/","tag-ai-prototyping":"/en/blog/tag/ai-prototyping/","tag-double-diamond":"/en/blog/tag/double-diamond/","tag-prd":"/en/blog/tag/prd/","tag-design-job-market":"/en/blog/tag/design-job-market/"};if(m[h])location.replace(m[h]);})();</script>
@@ -616,6 +636,7 @@ a.tagchip:hover{background:var(--hl); color:var(--on-hl)}
     <a class="brand" href="/en/">asafe<span> designer</span></a>
     <nav class="nav" aria-label="Sections">
       <a href="/en/#cases">Work</a>
+      <a href="/en/#o-que-faco">Results</a>
       <a href="/en/#trajetoria">Journey</a>
       <a href="/en/blog/" aria-current="page">Blog</a>
       <div class="lang-switch" role="group" aria-label="Language">
@@ -624,6 +645,10 @@ a.tagchip:hover{background:var(--hl); color:var(--on-hl)}
       </div>
       <a class="cta" href="/en/#contato">Contact</a>
     </nav>
+    <details class="m-menu">
+      <summary aria-label="Menu"><span class="ic" aria-hidden="true"></span>Menu</summary>
+      <nav class="m-panel" aria-label="Menu" onclick="if(event.target.closest('a'))this.parentNode.removeAttribute('open')"><a href="/en/#cases">Work</a><a href="/en/#o-que-faco">Results</a><a href="/en/#trajetoria">Journey</a><a href="/en/blog/" aria-current="page">Blog</a><a href="/en/#contato">Contact</a></nav>
+    </details>
   </div>
   <div class="progress" aria-hidden="true"></div>
 </header>

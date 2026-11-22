@@ -621,6 +621,26 @@ a.tagchip:hover{background:var(--hl); color:var(--on-hl)}
 .post-card .art{overflow:hidden}
 .post-card .art img{aspect-ratio:16/8; height:auto}
 
+/* mobile menu */
+.m-menu{display:none}
+.m-menu summary{list-style:none; min-height:44px; padding:8px 14px; border:var(--b-ui) solid var(--line); border-radius:var(--r-pill); background:var(--surface); color:var(--ink); font:800 14px/1 var(--sans); display:inline-flex; align-items:center; gap:10px; cursor:pointer; user-select:none}
+.m-menu summary::-webkit-details-marker{display:none}
+.m-menu .ic{position:relative; width:16px; height:2px; background:currentColor; box-shadow:0 -5px 0 currentColor, 0 5px 0 currentColor}
+.m-menu[open] summary{background:var(--ink); color:var(--paper)}
+.m-menu[open] .ic{box-shadow:none; transform:rotate(45deg)}
+.m-menu[open] .ic::after{content:""; position:absolute; inset:0; background:currentColor; transform:rotate(90deg)}
+.m-panel{position:absolute; left:0; right:0; top:100%; background:var(--paper); border-bottom:var(--b-ui) solid var(--line); padding:var(--s2) max(16px, env(safe-area-inset-right, 0px)) var(--s5) max(16px, env(safe-area-inset-left, 0px)); display:flex; flex-direction:column}
+.m-panel a{font:800 26px/1.15 var(--display); letter-spacing:-.4px; color:var(--ink); text-decoration:none; padding:16px 0; border-bottom:var(--b-ui) dashed var(--line)}
+.m-panel a:last-child{border-bottom:0}
+.m-panel a[aria-current="page"]{text-decoration:underline; text-decoration-color:var(--hl); text-decoration-thickness:8px; text-underline-offset:-2px; text-decoration-skip-ink:none}
+@media (max-width:640px){
+  .m-menu{display:block}
+  .nav a.cta{display:none}
+  .brand{white-space:nowrap}
+  .top .wrap{gap:var(--s2)}
+  .nav{margin-left:auto}
+}
+
 .crumbs{font-size:14px; font-weight:700; display:flex; gap:8px; flex-wrap:wrap; color:var(--ink-soft)}
 .crumbs a{color:var(--ink); text-decoration-thickness:2px; text-underline-offset:3px}
 .post-head .wrap{padding-block:var(--s7) var(--s5); display:flex; flex-direction:column; gap:var(--s4); max-width:920px}
@@ -674,6 +694,7 @@ a.tagchip:hover{background:var(--hl); color:var(--on-hl)}
     <a class="brand" href="/en/">asafe<span> designer</span></a>
     <nav class="nav" aria-label="Sections">
       <a href="/en/#cases">Work</a>
+      <a href="/en/#o-que-faco">Results</a>
       <a href="/en/#trajetoria">Journey</a>
       <a href="/en/blog/" aria-current="page">Blog</a>
       <div class="lang-switch" role="group" aria-label="Language">
@@ -682,6 +703,10 @@ a.tagchip:hover{background:var(--hl); color:var(--on-hl)}
       </div>
       <a class="cta" href="/en/#contato">Contact</a>
     </nav>
+    <details class="m-menu">
+      <summary aria-label="Menu"><span class="ic" aria-hidden="true"></span>Menu</summary>
+      <nav class="m-panel" aria-label="Menu" onclick="if(event.target.closest('a'))this.parentNode.removeAttribute('open')"><a href="/en/#cases">Work</a><a href="/en/#o-que-faco">Results</a><a href="/en/#trajetoria">Journey</a><a href="/en/blog/" aria-current="page">Blog</a><a href="/en/#contato">Contact</a></nav>
+    </details>
   </div>
   <div class="progress" aria-hidden="true"></div>
 </header>
