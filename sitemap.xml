@@ -45,9 +45,29 @@
   <url>
     <loc>https://www.asafedesigner.com.br/blog/</loc>
     <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.asafedesigner.com.br/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.asafedesigner.com.br/en/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.asafedesigner.com.br/en/blog/"/>
+  </url>
+  <url>
+    <loc>https://www.asafedesigner.com.br/en/blog/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.asafedesigner.com.br/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.asafedesigner.com.br/en/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.asafedesigner.com.br/en/blog/"/>
   </url>
   <url>
     <loc>https://www.asafedesigner.com.br/blog/o-aviao-que-nao-voltou/</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.asafedesigner.com.br/blog/o-aviao-que-nao-voltou/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.asafedesigner.com.br/en/blog/the-plane-that-didnt-come-back/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.asafedesigner.com.br/en/blog/the-plane-that-didnt-come-back/"/>
+  </url>
+  <url>
+    <loc>https://www.asafedesigner.com.br/en/blog/the-plane-that-didnt-come-back/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.asafedesigner.com.br/blog/o-aviao-que-nao-voltou/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.asafedesigner.com.br/en/blog/the-plane-that-didnt-come-back/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.asafedesigner.com.br/en/blog/the-plane-that-didnt-come-back/"/>
   </url>
 </urlset>
