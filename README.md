@@ -17,3 +17,7 @@ Não tem build. Para publicar na Vercel, importe o repositório e use as configu
 ## Idioma por localização
 
 `middleware.js` roda na Vercel só na página inicial (`/`). Visitantes de países de língua portuguesa (Brasil, Portugal, Angola, Moçambique, Cabo Verde, Guiné-Bissau, São Tomé e Príncipe, Timor-Leste) ficam no português; os demais vão para `/en/`. Quando a pessoa usa o seletor PT/EN, a escolha fica salva num cookie (`lang`) e passa a valer em vez da localização. Links diretos para `/en/` nunca são redirecionados.
+
+## Blog
+
+`blog/` é o arquivo do blog (com filtro por categoria e por tema) e cada post fica em `blog/<slug>/`. As páginas são geradas a partir do texto do post; categorias possíveis: Experiência, Produto e Tecnologia. `blog/feed.xml` é o RSS.

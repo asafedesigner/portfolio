@@ -42,4 +42,12 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.asafedesigner.com.br/en/cases/sinapsys/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.asafedesigner.com.br/en/cases/sinapsys/"/>
   </url>
+  <url>
+    <loc>https://www.asafedesigner.com.br/blog/</loc>
+    <lastmod>2026-11-22</lastmod>
+  </url>
+  <url>
+    <loc>https://www.asafedesigner.com.br/blog/o-aviao-que-nao-voltou/</loc>
+    <lastmod>2026-11-05</lastmod>
+  </url>
 </urlset>
