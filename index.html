@@ -103,6 +103,7 @@
 .nav .lang-switch a[aria-current]{background:var(--ink); color:var(--paper)}
 @media (max-width:640px){ .nav .lang-switch a[href]{display:inline-flex} }
 </style>
+<link rel="alternate" hreflang="pt-BR" href="/"><link rel="alternate" hreflang="en" href="/en/"><link rel="alternate" hreflang="x-default" href="/en/">
 <title>Asafe Ferreira</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -521,8 +522,8 @@ section[id], .view{scroll-margin-top:80px}
       <a href="#o-que-faco">Resultados</a>
       <a href="#trajetoria">Trajetória</a>
       <div class="lang-switch" role="group" aria-label="Idioma">
-        <a href="#inicio" hreflang="pt-BR" lang="pt-BR" aria-current="true">PT</a>
-        <a href="en/" hreflang="en" lang="en" >EN</a>
+        <a href="#inicio" data-lang="pt" hreflang="pt-BR" lang="pt-BR" aria-current="true">PT</a>
+        <a href="en/" data-lang="en" hreflang="en" lang="en" >EN</a>
       </div>
       <a class="cta" href="#contato">Contato</a>
     </nav>
@@ -1449,4 +1450,9 @@ section[id], .view{scroll-margin-top:80px}
 </script>
 
 
+<script>
+document.querySelectorAll('.lang-switch a[data-lang]').forEach(function(a){
+  a.addEventListener('click', function(){ document.cookie = 'lang=' + a.dataset.lang + '; path=/; max-age=31536000; SameSite=Lax'; });
+});
+</script>
 </body></html>

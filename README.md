@@ -12,3 +12,7 @@ Não tem build. Para publicar na Vercel, importe o repositório e use as configu
 ## English version
 
 `en/` holds the English version of the site, with its own translated copies of the videos and animated screens. Both versions link to each other from the top menu (PT / EN). The photo is shared from the root.
+
+## Idioma por localização
+
+`middleware.js` roda na Vercel só na página inicial (`/`). Visitantes de países de língua portuguesa (Brasil, Portugal, Angola, Moçambique, Cabo Verde, Guiné-Bissau, São Tomé e Príncipe, Timor-Leste) ficam no português; os demais vão para `/en/`. Quando a pessoa usa o seletor PT/EN, a escolha fica salva num cookie (`lang`) e passa a valer em vez da localização. Links diretos para `/en/` nunca são redirecionados.
