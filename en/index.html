@@ -97,8 +97,11 @@
 .dd-star path{fill:var(--cat-decisao); stroke:var(--ink); stroke-width:3.5; stroke-linejoin:round}
 .dd-star circle{fill:var(--ink)}
 @media (max-width:960px){ .me{width:min(80%, 340px)} }
-.nav a.lang{border:var(--b-ui) dashed var(--line); font-weight:800; letter-spacing:.04em}
-@media (max-width:640px){ .nav a.lang{display:inline-flex} }
+.lang-switch{display:inline-flex; padding:3px; border:var(--b-ui) solid var(--line); border-radius:var(--r-pill); background:var(--surface); gap:2px}
+.nav .lang-switch a{min-height:38px; padding:6px 12px; font-size:13px; font-weight:800; letter-spacing:.04em; border-radius:var(--r-pill); color:var(--ink-soft)}
+.nav .lang-switch a:hover{background:var(--paper-deep)}
+.nav .lang-switch a[aria-current]{background:var(--ink); color:var(--paper)}
+@media (max-width:640px){ .nav .lang-switch a[href]{display:inline-flex} }
 </style>
 <title>Asafe Ferreira</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -517,7 +520,10 @@ section[id], .view{scroll-margin-top:80px}
       <a href="#cases">Cases</a>
       <a href="#o-que-faco">Results</a>
       <a href="#trajetoria">Journey</a>
-      <a class="lang" href="../" hreflang="pt-BR" lang="pt-BR" aria-label="Versão em português">PT</a>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <a href="../" hreflang="pt-BR" lang="pt-BR" >PT</a>
+        <a href="#inicio" hreflang="en" lang="en" aria-current="true">EN</a>
+      </div>
       <a class="cta" href="#contato">Contact</a>
     </nav>
   </div>
