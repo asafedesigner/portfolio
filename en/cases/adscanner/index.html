@@ -235,7 +235,13 @@ p{margin:0}
 .j-nav button:disabled{opacity:.35; cursor:default}
 @media (max-width:899px){ .j-nav{display:none} .j-viewport{scroll-snap-type:none; cursor:auto} }
 .journey .sec-head{margin-bottom:var(--s5)}
-.j-viewport{overflow-x:auto; overscroll-behavior-x:contain; scrollbar-width:thin}
+.j-viewport{overflow-x:auto; overscroll-behavior-x:contain; scrollbar-width:auto}
+.j-viewport::-webkit-scrollbar{display:block; height:14px}
+.j-viewport::-webkit-scrollbar-track{background:var(--paper-deep); border:var(--b-ui) solid var(--line); border-radius:999px; margin-inline:max(var(--gutter-l, 16px), calc((100vw - 1200px) / 2 + 16px))}
+.j-viewport::-webkit-scrollbar-thumb{background:var(--ink); border:3px solid var(--paper-deep); border-radius:999px}
+.j-viewport::-webkit-scrollbar-thumb:hover{background:#000}
+.j-viewport::-webkit-scrollbar-thumb:active{background:var(--hl); border-color:var(--ink)}
+@supports not selector(::-webkit-scrollbar){ .j-viewport{scrollbar-width:thin; scrollbar-color:var(--ink) var(--paper-deep)} }
 .j-track{position:relative; display:flex; gap:var(--s5); width:max-content; padding:var(--s6) 0 var(--s5);
   padding-left:max(var(--gutter-l), calc((100vw - 1200px) / 2 + 16px)); padding-right:max(var(--gutter-r), 10vw)}
 .j-rail{position:absolute; left:0; right:0; top:var(--s6); height:0; border-top:2px dashed var(--faint)}
