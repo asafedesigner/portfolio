@@ -548,7 +548,7 @@ section[id], .view{scroll-margin-top:80px}
 .post-card{display:flex; flex-direction:column; text-decoration:none; color:var(--ink); background:var(--surface); border:var(--b-ui) solid var(--line); border-radius:var(--r-lg); overflow:hidden; transition:transform .2s}
 .post-card:hover{transform:translateY(-4px) rotate(-.3deg)}
 .post-card .art{border-bottom:var(--b-ui) solid var(--line); aspect-ratio:16/8; display:block}
-.post-card .art svg{width:100%; height:100%; display:block}
+.post-card .art img{width:100%; height:100%; object-fit:cover; display:block; filter:grayscale(1) contrast(1.05)}
 .post-card .pc-body{padding:var(--s5); display:flex; flex-direction:column; gap:var(--s3); flex:1}
 .post-card h2{font-size:clamp(22px, 2.4vw, 28px); line-height:1.15; font-weight:800; letter-spacing:-.4px}
 .post-card p{color:var(--ink-soft)}
@@ -597,13 +597,7 @@ section[id], .view{scroll-margin-top:80px}
   <section class="wrap" aria-label="Posts">
     <div class="posts" id="posts">
       <a class="post-card" href="/blog/o-aviao-que-nao-voltou/" data-cat="produto" data-tag="vies-do-sobrevivente">
-        <span class="art"><svg viewBox="0 0 640 320" aria-hidden="true">
-  <rect width="640" height="320" fill="#FFA061"/>
-  <ellipse cx="330" cy="170" rx="230" ry="110" fill="#FFE83A" transform="translate(6 8)"/>
-  <path class="dd-fill" d="M320 40 C334 40 338 62 338 80 L338 120 L500 158 C512 162 514 176 502 178 L338 164 L338 214 L376 234 C382 238 380 250 372 248 L324 240 L276 248 C268 250 266 238 272 234 L310 214 L310 164 L146 178 C134 176 136 162 148 158 L310 120 L310 80 C310 62 306 40 320 40 Z"/>
-  <circle class="dd-hole" cx="190" cy="156" r="4"/><circle class="dd-hole" cx="226" cy="148" r="3.5"/><circle class="dd-hole" cx="430" cy="148" r="4"/><circle class="dd-hole" cx="462" cy="158" r="3.5"/><circle class="dd-hole" cx="324" cy="190" r="3.5"/>
-  <circle class="dd-ring" cx="324" cy="90" r="28"/>
-</svg></span>
+        <span class="art"><img src="/blog/o-aviao-que-nao-voltou/p47.jpg" alt="" width="960" height="640" loading="lazy"></span>
         <span class="pc-body">
           <span class="meta"><span class="chip c-dec">Produto</span><span class="tagchip" data-tag-btn="vies-do-sobrevivente">Viés do sobrevivente</span><time datetime="2026-11-05">5 nov. 2026</time><span>· 4 min</span></span>
           <h2>O avião que não voltou: o viés do sobrevivente nas decisões de produto</h2>
