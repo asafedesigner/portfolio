@@ -98,4 +98,46 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.asafedesigner.com.br/en/blog/breaking-into-ux-with-ai/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.asafedesigner.com.br/en/blog/breaking-into-ux-with-ai/"/>
   </url>
+  <url>
+    <loc>https://www.asafedesigner.com.br/blog/categoria/experiencia/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.asafedesigner.com.br/blog/categoria/experiencia/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.asafedesigner.com.br/en/blog/category/experience/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.asafedesigner.com.br/en/blog/category/experience/"/>
+  </url>
+  <url>
+    <loc>https://www.asafedesigner.com.br/en/blog/category/experience/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.asafedesigner.com.br/blog/categoria/experiencia/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.asafedesigner.com.br/en/blog/category/experience/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.asafedesigner.com.br/en/blog/category/experience/"/>
+  </url>
+  <url>
+    <loc>https://www.asafedesigner.com.br/blog/categoria/produto/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.asafedesigner.com.br/blog/categoria/produto/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.asafedesigner.com.br/en/blog/category/product/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.asafedesigner.com.br/en/blog/category/product/"/>
+  </url>
+  <url>
+    <loc>https://www.asafedesigner.com.br/en/blog/category/product/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.asafedesigner.com.br/blog/categoria/produto/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.asafedesigner.com.br/en/blog/category/product/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.asafedesigner.com.br/en/blog/category/product/"/>
+  </url>
+  <url>
+    <loc>https://www.asafedesigner.com.br/blog/categoria/tecnologia/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.asafedesigner.com.br/blog/categoria/tecnologia/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.asafedesigner.com.br/en/blog/category/technology/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.asafedesigner.com.br/en/blog/category/technology/"/>
+  </url>
+  <url>
+    <loc>https://www.asafedesigner.com.br/en/blog/category/technology/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.asafedesigner.com.br/blog/categoria/tecnologia/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.asafedesigner.com.br/en/blog/category/technology/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.asafedesigner.com.br/en/blog/category/technology/"/>
+  </url>
 </urlset>

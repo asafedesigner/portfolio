@@ -129,7 +129,7 @@
 <meta name="twitter:image" content="https://www.asafedesigner.com.br/og-image-en.png">
 <meta name="twitter:image:alt" content="Asafe Ferreira, Senior Product Designer: Experience, Product and Technology">
 <link rel="alternate" type="application/rss+xml" title="Blog · Asafe Ferreira" href="https://www.asafedesigner.com.br/en/blog/feed.xml">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Blog", "@id": "https://www.asafedesigner.com.br/en/blog/#blog", "name": "Blog · Asafe Ferreira", "url": "https://www.asafedesigner.com.br/en/blog/", "inLanguage": "en", "author": {"@type": "Person", "@id": "https://www.asafedesigner.com.br/#asafe", "name": "Asafe Ferreira"}, "blogPost": [{"@type": "BlogPosting", "headline": "The plane that didn’t come back: survivorship bias in product decisions", "url": "https://www.asafedesigner.com.br/en/blog/the-plane-that-didnt-come-back/", "datePublished": "2026-11-05"}, {"@type": "BlogPosting", "headline": "Why is it so hard to quit food delivery (even when you swear you’ll cook more)?", "url": "https://www.asafedesigner.com.br/en/blog/why-its-so-hard-to-quit-food-delivery/", "datePublished": "2026-02-11"}, {"@type": "BlogPosting", "headline": "How do you break into UX in 2027, when AI already builds the prototype?", "url": "https://www.asafedesigner.com.br/en/blog/breaking-into-ux-with-ai/", "datePublished": "2026-11-22"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Blog", "@id": "https://www.asafedesigner.com.br/en/blog/#blog", "name": "Blog · Asafe Ferreira", "url": "https://www.asafedesigner.com.br/en/blog/", "inLanguage": "en", "author": {"@type": "Person", "@id": "https://www.asafedesigner.com.br/#asafe", "name": "Asafe Ferreira"}, "blogPost": [{"@type": "BlogPosting", "headline": "How do you break into UX in 2027, when AI already builds the prototype?", "url": "https://www.asafedesigner.com.br/en/blog/breaking-into-ux-with-ai/", "datePublished": "2026-11-22"}, {"@type": "BlogPosting", "headline": "The plane that didn’t come back: survivorship bias in product decisions", "url": "https://www.asafedesigner.com.br/en/blog/the-plane-that-didnt-come-back/", "datePublished": "2026-11-05"}, {"@type": "BlogPosting", "headline": "Why is it so hard to quit food delivery (even when you swear you’ll cook more)?", "url": "https://www.asafedesigner.com.br/en/blog/why-its-so-hard-to-quit-food-delivery/", "datePublished": "2026-02-11"}]}</script>
 <title>Blog | Asafe Ferreira · Experience, Product and Technology</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -584,11 +584,33 @@ section[id], .view{scroll-margin-top:80px}
 .prose blockquote{margin:1.6em 0; padding:var(--s2) 0 var(--s2) var(--s5); border-left:6px solid var(--hl); font-family:var(--display); font-weight:700; font-size:clamp(21px,2.4vw,26px); line-height:1.35}
 .prose blockquote p{margin:0}
 .post-card .art img.is-art{filter:none}
+.post-card{position:relative}
+.post-card h2 a{color:inherit; text-decoration:none}
+.post-card h2 a::after{content:""; position:absolute; inset:0; z-index:1}
+.post-card .meta a{position:relative; z-index:2; text-decoration:none}
+.post-card:focus-within{outline:3px solid var(--ink); outline-offset:4px}
+.post-card h2 a:focus-visible{outline:none}
+a.chip{text-decoration:none}
+.filters a{min-height:44px; display:inline-flex; align-items:center; padding:8px 16px; border-radius:var(--r-pill); border:var(--b-ui) solid var(--line); background:var(--surface); color:var(--ink); font:700 14px/1 var(--sans); text-decoration:none}
+.filters a:hover{background:var(--paper-deep)}
+.filters a[aria-current="page"]{background:var(--ink); color:var(--paper)}
+.filters a .n{font-variant-numeric:tabular-nums; opacity:.6; margin-left:6px}
+a.tagchip:hover{background:var(--hl); color:var(--on-hl)}
+.post-tags{max-width:68ch; margin:0 auto; padding-bottom:var(--s7); display:flex; flex-direction:column; gap:var(--s3); border-top:var(--b-ui) dashed var(--line); padding-top:var(--s5)}
+.tag-list{list-style:none; padding:0; margin:0; display:flex; flex-wrap:wrap; gap:10px}
+.tag-list .tagchip{font-size:14px; padding:9px 14px}
+.blog-hero h1.list-h1{font-size:clamp(44px, 7vw, 88px); letter-spacing:-2px; line-height:1}
+.list-back{padding-bottom:var(--s8)}
+.blog-hero .crumbs{font-size:14px; font-weight:700; display:flex; gap:8px; flex-wrap:wrap; color:var(--ink-soft)}
+.blog-hero .crumbs a{color:var(--ink); text-decoration-thickness:2px; text-underline-offset:3px}
+.blog-hero h1.list-h1{overflow-wrap:anywhere}
+
 .post-card .art{overflow:hidden}
 .post-card .art img{aspect-ratio:16/8; height:auto}
 
 </style>
 <body>
+<script>(function(){var h=decodeURIComponent((location.hash||"").slice(1));if(!h)return;var m={"experience":"/en/blog/category/experience/","product":"/en/blog/category/product/","technology":"/en/blog/category/technology/","tag-survivorship-bias":"/en/blog/tag/survivorship-bias/","tag-prioritization":"/en/blog/tag/prioritization/","tag-churn":"/en/blog/tag/churn/","tag-product-decisions":"/en/blog/tag/product-decisions/","tag-cognitive-biases":"/en/blog/tag/cognitive-biases/","tag-user-research":"/en/blog/tag/user-research/","tag-product-metrics":"/en/blog/tag/product-metrics/","tag-discovery":"/en/blog/tag/discovery/","tag-product-management":"/en/blog/tag/product-management/","tag-abraham-wald":"/en/blog/tag/abraham-wald/","tag-habit-formation":"/en/blog/tag/habit-formation/","tag-dopamine":"/en/blog/tag/dopamine/","tag-reward-circuit":"/en/blog/tag/reward-circuit/","tag-satisficing":"/en/blog/tag/satisficing/","tag-neuroscience":"/en/blog/tag/neuroscience/","tag-consumer-behavior":"/en/blog/tag/consumer-behavior/","tag-food-delivery":"/en/blog/tag/food-delivery/","tag-behavioral-design":"/en/blog/tag/behavioral-design/","tag-decision-making":"/en/blog/tag/decision-making/","tag-ux-careers":"/en/blog/tag/ux-careers/","tag-junior-ux-designer":"/en/blog/tag/junior-ux-designer/","tag-generative-ai":"/en/blog/tag/generative-ai/","tag-automation-bias":"/en/blog/tag/automation-bias/","tag-critical-thinking":"/en/blog/tag/critical-thinking/","tag-portfolio":"/en/blog/tag/portfolio/","tag-ai-prototyping":"/en/blog/tag/ai-prototyping/","tag-double-diamond":"/en/blog/tag/double-diamond/","tag-prd":"/en/blog/tag/prd/","tag-design-job-market":"/en/blog/tag/design-job-market/"};if(m[h])location.replace(m[h]);})();</script>
 <header class="top">
   <div class="wrap">
     <a class="brand" href="/en/">asafe<span> designer</span></a>
@@ -608,65 +630,46 @@ section[id], .view{scroll-margin-top:80px}
 <main>
   <section class="blog-hero">
     <div class="wrap">
+      
       <span class="hand">insights from my notes and research</span>
       <h1><span class="mark">Blog</span></h1>
       <p class="lede">Writing on experience, product and technology from the perspective of a neuroscience researcher.</p>
-      <div class="filters" role="group" aria-label="Filter by category"><button type="button" data-filter="todos" aria-pressed="true">All<span class="n">3</span></button><button type="button" data-filter="experience" aria-pressed="false">Experience<span class="n">1</span></button><button type="button" data-filter="product" aria-pressed="false">Product<span class="n">1</span></button><button type="button" data-filter="technology" aria-pressed="false">Technology<span class="n">1</span></button></div>
-      <div class="active-tag" id="activeTag" hidden>Topic: <button type="button" id="clearTag"></button></div>
+      <nav class="filters" aria-label="Filter by category"><a href="/en/blog/" aria-current="page">All<span class="n">3</span></a><a href="/en/blog/category/experience/">Experience<span class="n">1</span></a><a href="/en/blog/category/product/">Product<span class="n">1</span></a><a href="/en/blog/category/technology/">Technology<span class="n">1</span></a></nav>
     </div>
   </section>
   <section class="wrap" aria-label="Posts">
-    <div class="posts" id="posts">
-      <a class="post-card" href="/en/blog/breaking-into-ux-with-ai/" data-cat="technology" data-tag="ux-careers">
+    <div class="posts">
+      <article class="post-card">
         <span class="art"><img src="/blog/como-entrar-em-ux-com-ia/capa.jpg" alt="Black hardcover book titled UX Designer em 2027 with a white scribble, resting on a light fabric" width="1376" height="768" loading="lazy"></span>
-        <span class="pc-body">
-          <span class="meta"><span class="chip c-per">Technology</span><span class="tagchip" data-tag-btn="ux-careers">UX careers</span><time datetime="2026-11-22">Nov 22, 2026</time><span>· 3 min</span></span>
-          <h2>How do you break into UX in 2027, when AI already builds the prototype?</h2>
+        <div class="pc-body">
+          <div class="meta"><a class="chip c-per" href="/en/blog/category/technology/">Technology</a><a class="tagchip" href="/en/blog/tag/ux-careers/">UX careers</a><time datetime="2026-11-22">Nov 22, 2026</time><span>· 3 min</span></div>
+          <h2><a class="card-link" href="/en/blog/breaking-into-ux-with-ai/">How do you break into UX in 2027, when AI already builds the prototype?</a></h2>
           <p>Some say AI killed the junior role. I put together what I’ve seen make a difference for people breaking into UX, and how to show it in a case study even as a student.</p>
-          <span class="btn btn-ghost" style="align-self:flex-start;margin-top:auto">Read the post</span>
-        </span>
-      </a>
-      <a class="post-card" href="/en/blog/the-plane-that-didnt-come-back/" data-cat="product" data-tag="survivorship-bias">
+          <span class="btn btn-ghost" aria-hidden="true" style="align-self:flex-start;margin-top:auto">Read the post</span>
+        </div>
+      </article>
+      <article class="post-card">
         <span class="art"><img src="/blog/o-aviao-que-nao-voltou/p47.jpg" alt="P-47 Thunderbolt fighter parked on the airstrip, in a black-and-white World War II photo" width="960" height="640" loading="lazy"></span>
-        <span class="pc-body">
-          <span class="meta"><span class="chip c-dec">Product</span><span class="tagchip" data-tag-btn="survivorship-bias">Survivorship bias</span><time datetime="2026-11-05">Nov 5, 2026</time><span>· 5 min</span></span>
-          <h2>The plane that didn’t come back: survivorship bias in product decisions</h2>
+        <div class="pc-body">
+          <div class="meta"><a class="chip c-dec" href="/en/blog/category/product/">Product</a><a class="tagchip" href="/en/blog/tag/survivorship-bias/">Survivorship bias</a><time datetime="2026-11-05">Nov 5, 2026</time><span>· 5 min</span></div>
+          <h2><a class="card-link" href="/en/blog/the-plane-that-didnt-come-back/">The plane that didn’t come back: survivorship bias in product decisions</a></h2>
           <p>Two complaint queues, bandwidth for one. Gut feeling says prioritize the bigger one, but it might be looking at the wrong plane.</p>
-          <span class="btn btn-ghost" style="align-self:flex-start;margin-top:auto">Read the post</span>
-        </span>
-      </a>
-      <a class="post-card" href="/en/blog/why-its-so-hard-to-quit-food-delivery/" data-cat="experience" data-tag="habit-formation">
+          <span class="btn btn-ghost" aria-hidden="true" style="align-self:flex-start;margin-top:auto">Read the post</span>
+        </div>
+      </article>
+      <article class="post-card">
         <span class="art"><img src="/blog/por-que-e-tao-dificil-largar-o-delivery/capa.jpg" alt="Person sitting on a couch holding a phone with a food delivery app open on the screen" width="711" height="400" loading="lazy"></span>
-        <span class="pc-body">
-          <span class="meta"><span class="chip c-mem">Experience</span><span class="tagchip" data-tag-btn="habit-formation">Habit formation</span><time datetime="2026-02-11">Feb 11, 2026</time><span>· 4 min</span></span>
-          <h2>Why is it so hard to quit food delivery (even when you swear you’ll cook more)?</h2>
+        <div class="pc-body">
+          <div class="meta"><a class="chip c-mem" href="/en/blog/category/experience/">Experience</a><a class="tagchip" href="/en/blog/tag/habit-formation/">Habit formation</a><time datetime="2026-02-11">Feb 11, 2026</time><span>· 4 min</span></div>
+          <h2><a class="card-link" href="/en/blog/why-its-so-hard-to-quit-food-delivery/">Why is it so hard to quit food delivery (even when you swear you’ll cook more)?</a></h2>
           <p>“Order less delivery” makes the New Year’s list every January, then loses to the app on the first long day. Neuroscience helps explain why.</p>
-          <span class="btn btn-ghost" style="align-self:flex-start;margin-top:auto">Read the post</span>
-        </span>
-      </a>
-      <div class="empty" id="empty" hidden><b>No posts here yet</b>The next posts in this category are already in the works.</div>
+          <span class="btn btn-ghost" aria-hidden="true" style="align-self:flex-start;margin-top:auto">Read the post</span>
+        </div>
+      </article>
     </div>
+    
   </section>
 </main>
-<script>
-(function(){
-  var btns=[].slice.call(document.querySelectorAll('[data-filter]')), cards=[].slice.call(document.querySelectorAll('.post-card'));
-  var empty=document.getElementById('empty'), at=document.getElementById('activeTag'), clr=document.getElementById('clearTag');
-  function apply(){
-    var h=(location.hash||'').slice(1), cat='todos', tag=null;
-    if (h.indexOf('tag-')===0) tag=h.slice(4); else if (h) cat=h;
-    btns.forEach(function(b){ b.setAttribute('aria-pressed', String(!tag && b.dataset.filter===cat)); });
-    var shown=0;
-    cards.forEach(function(c){ var ok = tag ? c.dataset.tag===tag : (cat==='todos' || c.dataset.cat===cat); c.hidden=!ok; if(ok) shown++; });
-    empty.hidden = shown>0;
-    if (tag){ var el=document.querySelector('[data-tag-btn="'+tag+'"]'); clr.textContent=(el?el.textContent:tag)+'  ✕'; at.hidden=false; } else at.hidden=true;
-  }
-  btns.forEach(function(b){ b.addEventListener('click', function(){ location.hash = b.dataset.filter==='todos' ? '' : b.dataset.filter; if(b.dataset.filter==='todos') apply(); }); });
-  document.querySelectorAll('[data-tag-btn]').forEach(function(t){ t.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); location.hash='tag-'+t.dataset.tagBtn; }); });
-  clr.addEventListener('click', function(){ history.replaceState(null,'',location.pathname); apply(); });
-  addEventListener('hashchange', apply); apply();
-})();
-</script>
 <section class="bw-cta" aria-labelledby="bw-title">
   <div class="wrap">
     <div class="bw-card">

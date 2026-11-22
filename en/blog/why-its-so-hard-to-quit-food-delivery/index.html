@@ -132,8 +132,17 @@
 <meta property="article:author" content="Asafe Ferreira">
 <meta property="article:section" content="Experience">
 <meta property="article:tag" content="Habit formation">
+<meta property="article:tag" content="Dopamine">
+<meta property="article:tag" content="Reward circuit">
+<meta property="article:tag" content="Satisficing">
+<meta property="article:tag" content="Neuroscience">
+<meta property="article:tag" content="Consumer behavior">
+<meta property="article:tag" content="Cognitive biases">
+<meta property="article:tag" content="Food delivery">
+<meta property="article:tag" content="Behavioral design">
+<meta property="article:tag" content="Decision-making">
 <link rel="alternate" type="application/rss+xml" title="Blog · Asafe Ferreira" href="https://www.asafedesigner.com.br/en/blog/feed.xml">
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BlogPosting", "@id": "https://www.asafedesigner.com.br/en/blog/why-its-so-hard-to-quit-food-delivery/#post", "headline": "Why is it so hard to quit food delivery (even when you swear you’ll cook more)?", "description": "Dopamine, habit loops, satisficing and hunger: what neuroscience says about why it’s so hard to stop ordering delivery, and what that teaches product designers.", "datePublished": "2026-02-11", "dateModified": "2026-02-11", "inLanguage": "en", "mainEntityOfPage": "https://www.asafedesigner.com.br/en/blog/why-its-so-hard-to-quit-food-delivery/", "url": "https://www.asafedesigner.com.br/en/blog/why-its-so-hard-to-quit-food-delivery/", "image": "https://www.asafedesigner.com.br/blog/por-que-e-tao-dificil-largar-o-delivery/og.jpg", "articleSection": "Experience", "keywords": ["Habit formation", "dopamine", "reward circuit", "satisficing", "food delivery"], "wordCount": 735, "author": {"@type": "Person", "@id": "https://www.asafedesigner.com.br/#asafe", "name": "Asafe Ferreira", "url": "https://www.asafedesigner.com.br/en/"}, "publisher": {"@type": "Person", "@id": "https://www.asafedesigner.com.br/#asafe"}, "isPartOf": {"@type": "Blog", "@id": "https://www.asafedesigner.com.br/en/blog/#blog"}, "translationOfWork": {"@id": "https://www.asafedesigner.com.br/blog/por-que-e-tao-dificil-largar-o-delivery/#post"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.asafedesigner.com.br/en/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.asafedesigner.com.br/en/blog/"}, {"@type": "ListItem", "position": 3, "name": "Why is it so hard to quit food delivery", "item": "https://www.asafedesigner.com.br/en/blog/why-its-so-hard-to-quit-food-delivery/"}]}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BlogPosting", "@id": "https://www.asafedesigner.com.br/en/blog/why-its-so-hard-to-quit-food-delivery/#post", "headline": "Why is it so hard to quit food delivery (even when you swear you’ll cook more)?", "description": "Dopamine, habit loops, satisficing and hunger: what neuroscience says about why it’s so hard to stop ordering delivery, and what that teaches product designers.", "datePublished": "2026-02-11", "dateModified": "2026-02-11", "inLanguage": "en", "mainEntityOfPage": "https://www.asafedesigner.com.br/en/blog/why-its-so-hard-to-quit-food-delivery/", "url": "https://www.asafedesigner.com.br/en/blog/why-its-so-hard-to-quit-food-delivery/", "image": "https://www.asafedesigner.com.br/blog/por-que-e-tao-dificil-largar-o-delivery/og.jpg", "articleSection": "Experience", "keywords": ["Habit formation", "Dopamine", "Reward circuit", "Satisficing", "Neuroscience", "Consumer behavior", "Cognitive biases", "Food delivery", "Behavioral design", "Decision-making"], "wordCount": 735, "author": {"@type": "Person", "@id": "https://www.asafedesigner.com.br/#asafe", "name": "Asafe Ferreira", "url": "https://www.asafedesigner.com.br/en/"}, "publisher": {"@type": "Person", "@id": "https://www.asafedesigner.com.br/#asafe"}, "isPartOf": {"@type": "Blog", "@id": "https://www.asafedesigner.com.br/en/blog/#blog"}, "translationOfWork": {"@id": "https://www.asafedesigner.com.br/blog/por-que-e-tao-dificil-largar-o-delivery/#post"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.asafedesigner.com.br/en/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.asafedesigner.com.br/en/blog/"}, {"@type": "ListItem", "position": 3, "name": "Why is it so hard to quit food delivery", "item": "https://www.asafedesigner.com.br/en/blog/why-its-so-hard-to-quit-food-delivery/"}]}]}</script>
 <title>Why is it so hard to quit food delivery (even when you swear you’ll cook more)? | Asafe Ferreira</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -588,6 +597,27 @@ section[id], .view{scroll-margin-top:80px}
 .prose blockquote{margin:1.6em 0; padding:var(--s2) 0 var(--s2) var(--s5); border-left:6px solid var(--hl); font-family:var(--display); font-weight:700; font-size:clamp(21px,2.4vw,26px); line-height:1.35}
 .prose blockquote p{margin:0}
 .post-card .art img.is-art{filter:none}
+.post-card{position:relative}
+.post-card h2 a{color:inherit; text-decoration:none}
+.post-card h2 a::after{content:""; position:absolute; inset:0; z-index:1}
+.post-card .meta a{position:relative; z-index:2; text-decoration:none}
+.post-card:focus-within{outline:3px solid var(--ink); outline-offset:4px}
+.post-card h2 a:focus-visible{outline:none}
+a.chip{text-decoration:none}
+.filters a{min-height:44px; display:inline-flex; align-items:center; padding:8px 16px; border-radius:var(--r-pill); border:var(--b-ui) solid var(--line); background:var(--surface); color:var(--ink); font:700 14px/1 var(--sans); text-decoration:none}
+.filters a:hover{background:var(--paper-deep)}
+.filters a[aria-current="page"]{background:var(--ink); color:var(--paper)}
+.filters a .n{font-variant-numeric:tabular-nums; opacity:.6; margin-left:6px}
+a.tagchip:hover{background:var(--hl); color:var(--on-hl)}
+.post-tags{max-width:68ch; margin:0 auto; padding-bottom:var(--s7); display:flex; flex-direction:column; gap:var(--s3); border-top:var(--b-ui) dashed var(--line); padding-top:var(--s5)}
+.tag-list{list-style:none; padding:0; margin:0; display:flex; flex-wrap:wrap; gap:10px}
+.tag-list .tagchip{font-size:14px; padding:9px 14px}
+.blog-hero h1.list-h1{font-size:clamp(44px, 7vw, 88px); letter-spacing:-2px; line-height:1}
+.list-back{padding-bottom:var(--s8)}
+.blog-hero .crumbs{font-size:14px; font-weight:700; display:flex; gap:8px; flex-wrap:wrap; color:var(--ink-soft)}
+.blog-hero .crumbs a{color:var(--ink); text-decoration-thickness:2px; text-underline-offset:3px}
+.blog-hero h1.list-h1{overflow-wrap:anywhere}
+
 .post-card .art{overflow:hidden}
 .post-card .art img{aspect-ratio:16/8; height:auto}
 
@@ -659,8 +689,8 @@ section[id], .view{scroll-margin-top:80px}
   <article>
     <section class="post-head">
       <div class="wrap">
-        <nav class="crumbs" aria-label="Breadcrumb"><a href="/en/">Home</a><span aria-hidden="true">/</span><a href="/en/blog/">Blog</a><span aria-hidden="true">/</span><span>Experience</span></nav>
-        <div class="meta"><span class="chip c-mem">Experience</span><a class="tagchip" href="/en/blog/#tag-habit-formation">Habit formation</a><time datetime="2026-02-11">Feb 11, 2026</time><span>·</span><span>4 min read</span></div>
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="/en/">Home</a><span aria-hidden="true">/</span><a href="/en/blog/">Blog</a><span aria-hidden="true">/</span><a href="/en/blog/category/experience/">Experience</a></nav>
+        <div class="meta"><a class="chip c-mem" href="/en/blog/category/experience/">Experience</a><a class="tagchip" href="/en/blog/tag/habit-formation/">Habit formation</a><time datetime="2026-02-11">Feb 11, 2026</time><span>·</span><span>4 min read</span></div>
         <h1>Why is it so hard to quit food delivery (even when you swear you’ll cook more)?</h1>
         <p class="dek">“Order less delivery” makes the New Year’s list every January, then loses to the app on the first long day. Neuroscience helps explain why.</p>
         <figure class="post-photo"><img src="/blog/por-que-e-tao-dificil-largar-o-delivery/capa.jpg" alt="Person sitting on a couch holding a phone with a food delivery app open on the screen" width="711" height="400" fetchpriority="high"></figure>
@@ -718,6 +748,10 @@ section[id], .view{scroll-margin-top:80px}
 </section>
 
       </div>
+      <nav class="post-tags" aria-label="Post tags">
+        <span class="label">Tags for this post</span>
+        <ul class="tag-list"><li><a class="tagchip" href="/en/blog/tag/habit-formation/">Habit formation</a></li><li><a class="tagchip" href="/en/blog/tag/dopamine/">Dopamine</a></li><li><a class="tagchip" href="/en/blog/tag/reward-circuit/">Reward circuit</a></li><li><a class="tagchip" href="/en/blog/tag/satisficing/">Satisficing</a></li><li><a class="tagchip" href="/en/blog/tag/neuroscience/">Neuroscience</a></li><li><a class="tagchip" href="/en/blog/tag/consumer-behavior/">Consumer behavior</a></li><li><a class="tagchip" href="/en/blog/tag/cognitive-biases/">Cognitive biases</a></li><li><a class="tagchip" href="/en/blog/tag/food-delivery/">Food delivery</a></li><li><a class="tagchip" href="/en/blog/tag/behavioral-design/">Behavioral design</a></li><li><a class="tagchip" href="/en/blog/tag/decision-making/">Decision-making</a></li></ul>
+      </nav>
     </div>
   </article>
   <section class="post-foot" aria-label="About the author">

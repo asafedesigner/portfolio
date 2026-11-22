@@ -129,7 +129,7 @@
 <meta name="twitter:image" content="https://www.asafedesigner.com.br/og-image.png">
 <meta name="twitter:image:alt" content="Asafe Ferreira, Senior Product Designer: Experiência, Produto e Tecnologia">
 <link rel="alternate" type="application/rss+xml" title="Blog · Asafe Ferreira" href="https://www.asafedesigner.com.br/blog/feed.xml">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Blog", "@id": "https://www.asafedesigner.com.br/blog/#blog", "name": "Blog · Asafe Ferreira", "url": "https://www.asafedesigner.com.br/blog/", "inLanguage": "pt-BR", "author": {"@type": "Person", "@id": "https://www.asafedesigner.com.br/#asafe", "name": "Asafe Ferreira"}, "blogPost": [{"@type": "BlogPosting", "headline": "O avião que não voltou: o viés do sobrevivente nas decisões de produto", "url": "https://www.asafedesigner.com.br/blog/o-aviao-que-nao-voltou/", "datePublished": "2026-11-05"}, {"@type": "BlogPosting", "headline": "Por que é tão difícil largar o delivery (mesmo quando você jura que vai cozinhar mais)?", "url": "https://www.asafedesigner.com.br/blog/por-que-e-tao-dificil-largar-o-delivery/", "datePublished": "2026-02-11"}, {"@type": "BlogPosting", "headline": "Como entrar em UX quando a IA já faz o protótipo no ano de 2027?", "url": "https://www.asafedesigner.com.br/blog/como-entrar-em-ux-com-ia/", "datePublished": "2026-11-22"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Blog", "@id": "https://www.asafedesigner.com.br/blog/#blog", "name": "Blog · Asafe Ferreira", "url": "https://www.asafedesigner.com.br/blog/", "inLanguage": "pt-BR", "author": {"@type": "Person", "@id": "https://www.asafedesigner.com.br/#asafe", "name": "Asafe Ferreira"}, "blogPost": [{"@type": "BlogPosting", "headline": "Como entrar em UX quando a IA já faz o protótipo no ano de 2027?", "url": "https://www.asafedesigner.com.br/blog/como-entrar-em-ux-com-ia/", "datePublished": "2026-11-22"}, {"@type": "BlogPosting", "headline": "O avião que não voltou: o viés do sobrevivente nas decisões de produto", "url": "https://www.asafedesigner.com.br/blog/o-aviao-que-nao-voltou/", "datePublished": "2026-11-05"}, {"@type": "BlogPosting", "headline": "Por que é tão difícil largar o delivery (mesmo quando você jura que vai cozinhar mais)?", "url": "https://www.asafedesigner.com.br/blog/por-que-e-tao-dificil-largar-o-delivery/", "datePublished": "2026-02-11"}]}</script>
 <title>Blog | Asafe Ferreira · Experiência, Produto e Tecnologia</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -584,11 +584,33 @@ section[id], .view{scroll-margin-top:80px}
 .prose blockquote{margin:1.6em 0; padding:var(--s2) 0 var(--s2) var(--s5); border-left:6px solid var(--hl); font-family:var(--display); font-weight:700; font-size:clamp(21px,2.4vw,26px); line-height:1.35}
 .prose blockquote p{margin:0}
 .post-card .art img.is-art{filter:none}
+.post-card{position:relative}
+.post-card h2 a{color:inherit; text-decoration:none}
+.post-card h2 a::after{content:""; position:absolute; inset:0; z-index:1}
+.post-card .meta a{position:relative; z-index:2; text-decoration:none}
+.post-card:focus-within{outline:3px solid var(--ink); outline-offset:4px}
+.post-card h2 a:focus-visible{outline:none}
+a.chip{text-decoration:none}
+.filters a{min-height:44px; display:inline-flex; align-items:center; padding:8px 16px; border-radius:var(--r-pill); border:var(--b-ui) solid var(--line); background:var(--surface); color:var(--ink); font:700 14px/1 var(--sans); text-decoration:none}
+.filters a:hover{background:var(--paper-deep)}
+.filters a[aria-current="page"]{background:var(--ink); color:var(--paper)}
+.filters a .n{font-variant-numeric:tabular-nums; opacity:.6; margin-left:6px}
+a.tagchip:hover{background:var(--hl); color:var(--on-hl)}
+.post-tags{max-width:68ch; margin:0 auto; padding-bottom:var(--s7); display:flex; flex-direction:column; gap:var(--s3); border-top:var(--b-ui) dashed var(--line); padding-top:var(--s5)}
+.tag-list{list-style:none; padding:0; margin:0; display:flex; flex-wrap:wrap; gap:10px}
+.tag-list .tagchip{font-size:14px; padding:9px 14px}
+.blog-hero h1.list-h1{font-size:clamp(44px, 7vw, 88px); letter-spacing:-2px; line-height:1}
+.list-back{padding-bottom:var(--s8)}
+.blog-hero .crumbs{font-size:14px; font-weight:700; display:flex; gap:8px; flex-wrap:wrap; color:var(--ink-soft)}
+.blog-hero .crumbs a{color:var(--ink); text-decoration-thickness:2px; text-underline-offset:3px}
+.blog-hero h1.list-h1{overflow-wrap:anywhere}
+
 .post-card .art{overflow:hidden}
 .post-card .art img{aspect-ratio:16/8; height:auto}
 
 </style>
 <body>
+<script>(function(){var h=decodeURIComponent((location.hash||"").slice(1));if(!h)return;var m={"experiencia":"/blog/categoria/experiencia/","produto":"/blog/categoria/produto/","tecnologia":"/blog/categoria/tecnologia/","tag-vies-do-sobrevivente":"/blog/tag/vies-do-sobrevivente/","tag-priorizacao":"/blog/tag/priorizacao/","tag-churn":"/blog/tag/churn/","tag-decisoes-de-produto":"/blog/tag/decisoes-de-produto/","tag-vieses-cognitivos":"/blog/tag/vieses-cognitivos/","tag-pesquisa-com-usuarios":"/blog/tag/pesquisa-com-usuarios/","tag-metricas-de-produto":"/blog/tag/metricas-de-produto/","tag-discovery":"/blog/tag/discovery/","tag-gestao-de-produto":"/blog/tag/gestao-de-produto/","tag-abraham-wald":"/blog/tag/abraham-wald/","tag-formacao-de-habito":"/blog/tag/formacao-de-habito/","tag-dopamina":"/blog/tag/dopamina/","tag-circuito-de-recompensa":"/blog/tag/circuito-de-recompensa/","tag-satisficing":"/blog/tag/satisficing/","tag-neurociencia":"/blog/tag/neurociencia/","tag-comportamento-do-consumidor":"/blog/tag/comportamento-do-consumidor/","tag-food-delivery":"/blog/tag/food-delivery/","tag-design-comportamental":"/blog/tag/design-comportamental/","tag-tomada-de-decisao":"/blog/tag/tomada-de-decisao/","tag-carreira-em-ux":"/blog/tag/carreira-em-ux/","tag-ux-designer-junior":"/blog/tag/ux-designer-junior/","tag-ia-generativa":"/blog/tag/ia-generativa/","tag-vies-de-automacao":"/blog/tag/vies-de-automacao/","tag-senso-critico":"/blog/tag/senso-critico/","tag-portfolio":"/blog/tag/portfolio/","tag-prototipacao-com-ia":"/blog/tag/prototipacao-com-ia/","tag-double-diamond":"/blog/tag/double-diamond/","tag-prd":"/blog/tag/prd/","tag-mercado-de-design":"/blog/tag/mercado-de-design/"};if(m[h])location.replace(m[h]);})();</script>
 <header class="top">
   <div class="wrap">
     <a class="brand" href="/">asafe<span> designer</span></a>
@@ -608,65 +630,46 @@ section[id], .view{scroll-margin-top:80px}
 <main>
   <section class="blog-hero">
     <div class="wrap">
+      
       <span class="hand">insights com base nas minhas anotações e pesquisas</span>
       <h1><span class="mark">Blog</span></h1>
       <p class="lede">Textos sobre experiência, produto e tecnologia sob a perspectiva de um pesquisador de neurociência.</p>
-      <div class="filters" role="group" aria-label="Filtrar por categoria"><button type="button" data-filter="todos" aria-pressed="true">Todos<span class="n">3</span></button><button type="button" data-filter="experiencia" aria-pressed="false">Experiência<span class="n">1</span></button><button type="button" data-filter="produto" aria-pressed="false">Produto<span class="n">1</span></button><button type="button" data-filter="tecnologia" aria-pressed="false">Tecnologia<span class="n">1</span></button></div>
-      <div class="active-tag" id="activeTag" hidden>Tema: <button type="button" id="clearTag"></button></div>
+      <nav class="filters" aria-label="Filtrar por categoria"><a href="/blog/" aria-current="page">Todos<span class="n">3</span></a><a href="/blog/categoria/experiencia/">Experiência<span class="n">1</span></a><a href="/blog/categoria/produto/">Produto<span class="n">1</span></a><a href="/blog/categoria/tecnologia/">Tecnologia<span class="n">1</span></a></nav>
     </div>
   </section>
   <section class="wrap" aria-label="Posts">
-    <div class="posts" id="posts">
-      <a class="post-card" href="/blog/como-entrar-em-ux-com-ia/" data-cat="tecnologia" data-tag="carreira-em-ux">
+    <div class="posts">
+      <article class="post-card">
         <span class="art"><img src="/blog/como-entrar-em-ux-com-ia/capa.jpg" alt="Livro de capa preta com o título UX Designer em 2027 e um rabisco branco, sobre um tecido claro" width="1376" height="768" loading="lazy"></span>
-        <span class="pc-body">
-          <span class="meta"><span class="chip c-per">Tecnologia</span><span class="tagchip" data-tag-btn="carreira-em-ux">Carreira em UX</span><time datetime="2026-11-22">22 nov. 2026</time><span>· 3 min</span></span>
-          <h2>Como entrar em UX quando a IA já faz o protótipo no ano de 2027?</h2>
+        <div class="pc-body">
+          <div class="meta"><a class="chip c-per" href="/blog/categoria/tecnologia/">Tecnologia</a><a class="tagchip" href="/blog/tag/carreira-em-ux/">Carreira em UX</a><time datetime="2026-11-22">22 nov. 2026</time><span>· 3 min</span></div>
+          <h2><a class="card-link" href="/blog/como-entrar-em-ux-com-ia/">Como entrar em UX quando a IA já faz o protótipo no ano de 2027?</a></h2>
           <p>Tem quem diga que a vaga de júnior acabou com a IA. Reuni o que tenho visto pesar para quem está entrando em UX e como mostrar isso num case, mesmo sendo estudante.</p>
-          <span class="btn btn-ghost" style="align-self:flex-start;margin-top:auto">Ler o post</span>
-        </span>
-      </a>
-      <a class="post-card" href="/blog/o-aviao-que-nao-voltou/" data-cat="produto" data-tag="vies-do-sobrevivente">
+          <span class="btn btn-ghost" aria-hidden="true" style="align-self:flex-start;margin-top:auto">Ler o post</span>
+        </div>
+      </article>
+      <article class="post-card">
         <span class="art"><img src="/blog/o-aviao-que-nao-voltou/p47.jpg" alt="Caça P-47 Thunderbolt estacionado na pista, em foto em preto e branco da Segunda Guerra" width="960" height="640" loading="lazy"></span>
-        <span class="pc-body">
-          <span class="meta"><span class="chip c-dec">Produto</span><span class="tagchip" data-tag-btn="vies-do-sobrevivente">Viés do sobrevivente</span><time datetime="2026-11-05">5 nov. 2026</time><span>· 4 min</span></span>
-          <h2>O avião que não voltou: o viés do sobrevivente nas decisões de produto</h2>
+        <div class="pc-body">
+          <div class="meta"><a class="chip c-dec" href="/blog/categoria/produto/">Produto</a><a class="tagchip" href="/blog/tag/vies-do-sobrevivente/">Viés do sobrevivente</a><time datetime="2026-11-05">5 nov. 2026</time><span>· 4 min</span></div>
+          <h2><a class="card-link" href="/blog/o-aviao-que-nao-voltou/">O avião que não voltou: o viés do sobrevivente nas decisões de produto</a></h2>
           <p>Duas filas de reclamação, fôlego para uma. A intuição manda priorizar a maior, mas ela pode estar olhando pro avião errado.</p>
-          <span class="btn btn-ghost" style="align-self:flex-start;margin-top:auto">Ler o post</span>
-        </span>
-      </a>
-      <a class="post-card" href="/blog/por-que-e-tao-dificil-largar-o-delivery/" data-cat="experiencia" data-tag="formacao-de-habito">
+          <span class="btn btn-ghost" aria-hidden="true" style="align-self:flex-start;margin-top:auto">Ler o post</span>
+        </div>
+      </article>
+      <article class="post-card">
         <span class="art"><img src="/blog/por-que-e-tao-dificil-largar-o-delivery/capa.jpg" alt="Pessoa sentada no sofá segurando o celular com um app de delivery de comida aberto na tela" width="711" height="400" loading="lazy"></span>
-        <span class="pc-body">
-          <span class="meta"><span class="chip c-mem">Experiência</span><span class="tagchip" data-tag-btn="formacao-de-habito">Formação de hábito</span><time datetime="2026-02-11">11 fev. 2026</time><span>· 4 min</span></span>
-          <h2>Por que é tão difícil largar o delivery (mesmo quando você jura que vai cozinhar mais)?</h2>
+        <div class="pc-body">
+          <div class="meta"><a class="chip c-mem" href="/blog/categoria/experiencia/">Experiência</a><a class="tagchip" href="/blog/tag/formacao-de-habito/">Formação de hábito</a><time datetime="2026-02-11">11 fev. 2026</time><span>· 4 min</span></div>
+          <h2><a class="card-link" href="/blog/por-que-e-tao-dificil-largar-o-delivery/">Por que é tão difícil largar o delivery (mesmo quando você jura que vai cozinhar mais)?</a></h2>
           <p>Pedir menos delivery volta para a lista de metas todo começo de ano, e perde para o app no primeiro dia puxado. A neurociência ajuda a explicar por quê.</p>
-          <span class="btn btn-ghost" style="align-self:flex-start;margin-top:auto">Ler o post</span>
-        </span>
-      </a>
-      <div class="empty" id="empty" hidden><b>Ainda não tem post aqui</b>Os próximos textos desta categoria já estão no forno.</div>
+          <span class="btn btn-ghost" aria-hidden="true" style="align-self:flex-start;margin-top:auto">Ler o post</span>
+        </div>
+      </article>
     </div>
+    
   </section>
 </main>
-<script>
-(function(){
-  var btns=[].slice.call(document.querySelectorAll('[data-filter]')), cards=[].slice.call(document.querySelectorAll('.post-card'));
-  var empty=document.getElementById('empty'), at=document.getElementById('activeTag'), clr=document.getElementById('clearTag');
-  function apply(){
-    var h=(location.hash||'').slice(1), cat='todos', tag=null;
-    if (h.indexOf('tag-')===0) tag=h.slice(4); else if (h) cat=h;
-    btns.forEach(function(b){ b.setAttribute('aria-pressed', String(!tag && b.dataset.filter===cat)); });
-    var shown=0;
-    cards.forEach(function(c){ var ok = tag ? c.dataset.tag===tag : (cat==='todos' || c.dataset.cat===cat); c.hidden=!ok; if(ok) shown++; });
-    empty.hidden = shown>0;
-    if (tag){ var el=document.querySelector('[data-tag-btn="'+tag+'"]'); clr.textContent=(el?el.textContent:tag)+'  ✕'; at.hidden=false; } else at.hidden=true;
-  }
-  btns.forEach(function(b){ b.addEventListener('click', function(){ location.hash = b.dataset.filter==='todos' ? '' : b.dataset.filter; if(b.dataset.filter==='todos') apply(); }); });
-  document.querySelectorAll('[data-tag-btn]').forEach(function(t){ t.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); location.hash='tag-'+t.dataset.tagBtn; }); });
-  clr.addEventListener('click', function(){ history.replaceState(null,'',location.pathname); apply(); });
-  addEventListener('hashchange', apply); apply();
-})();
-</script>
 <section class="bw-cta" aria-labelledby="bw-title">
   <div class="wrap">
     <div class="bw-card">
