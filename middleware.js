@@ -5,7 +5,14 @@ export const config = { matcher: '/' };
 
 const PORTUGUESE = new Set(['BR', 'PT', 'AO', 'MZ', 'CV', 'GW', 'ST', 'TL']);
 
+// Buscadores e geradores de prévia (Google, Bing, LinkedIn, WhatsApp...) nunca são redirecionados:
+// eles precisam ver cada versão no próprio endereço para indexar as duas pelo hreflang.
+const BOTS = /bot|crawl|spider|slurp|facebookexternalhit|embedly|whatsapp|telegram|discord|skype|preview|lighthouse|vercel-screenshot/i;
+
 export default function middleware(request) {
+  if (BOTS.test(request.headers.get('user-agent') || '')) {
+    return new Response(null, { headers: { 'x-middleware-next': '1' } });
+  }
   const cookie = request.headers.get('cookie') || '';
   const chosen = (cookie.match(/(?:^|;\s*)lang=(pt|en)\b/) || [])[1];
   const country = (request.headers.get('x-vercel-ip-country') || '').toUpperCase();
